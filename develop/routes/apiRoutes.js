@@ -1,5 +1,7 @@
+
 const fs = require("fs");
 const { v4: uuidv4 } = require('uuid');
+uuidv4(); // ⇨ '1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed'
 const db = require("../db/db.json")
 
 
@@ -19,4 +21,18 @@ module.exports = (app) => {
         res.send(newNote);
     });
 
+    app.delete("/api/notes/:id", (req, res) => {
+        
+        let noteId = req.params.id
+
+        for (var i = 0; i < db.length; i++) {
+            if(db[i].id === noteId) {
+                let objectIndex = db.indexOf(db);
+                db.splice(objectIndex,1);
+            }
+        res.send(db);
+    }
+});
 };
+
+uuidv4(); 
